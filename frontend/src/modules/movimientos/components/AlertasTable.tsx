@@ -1,9 +1,7 @@
-// components/AlertasTable.tsx
-import AlertaBadge from "./AlertaBadge";
+import AlertaBar from "./AlertaBadge";
 
 export default function AlertasTable({
   alertas,
-  getColor,
   calcularPorcentaje,
 }: any) {
   return (
@@ -19,7 +17,6 @@ export default function AlertasTable({
 
       <tbody>
         {alertas.map((a: any) => {
-          const color = getColor(a);
           const porcentaje = calcularPorcentaje(a);
 
           return (
@@ -28,10 +25,7 @@ export default function AlertasTable({
               <td>{a.stock_actual}</td>
               <td>{a.stock_minimo}</td>
               <td>
-                <AlertaBadge
-                  color={color}
-                  porcentaje={porcentaje}
-                />
+                <AlertaBar porcentaje={porcentaje} />
               </td>
             </tr>
           );

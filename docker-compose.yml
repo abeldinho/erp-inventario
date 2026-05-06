@@ -13,7 +13,6 @@ services:
     ports:
       - "5432:5432"
 
-  # Backend - FastAPI
   backend:
     build:
       context: ./backend
@@ -23,7 +22,7 @@ services:
       - db
     environment:
       DATABASE_URL: postgresql://inventory:inventory_pass@db:5432/inventory_db
-      ENVIRONMENT: development
+      CORS_ORIGINS: http://localhost:5173,http://127.0.0.1:5173,http://localhost:80
     ports:
       - "8000:8000"
     volumes:
@@ -34,7 +33,6 @@ services:
       uvicorn main:app --host 0.0.0.0 --port 8000 --reload
       "
 
-  # Frontend - React/Vite
   frontend:
     build:
       context: ./frontend

@@ -37,7 +37,7 @@ export default function MovimientoForm({ productos, onSubmit }: Props) {
   } = useForm<MovimientoFormData>({
     resolver: zodResolver(movimientoSchema),
     defaultValues: {
-      tipo: "",
+      tipo: undefined,
       usuario: "admin",
     },
   });
@@ -88,7 +88,7 @@ export default function MovimientoForm({ productos, onSubmit }: Props) {
       // ✅ reset form
       reset({
         producto_id: undefined,
-        tipo: "",
+        tipo: undefined,
         cantidad: undefined,
         motivo: "",
         usuario: "admin",

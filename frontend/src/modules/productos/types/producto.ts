@@ -2,13 +2,16 @@
 
 export interface Producto {
   id: number;
-  "nombre": string,
-  "descripcion": string,
-  "sku": string,
-  "categoria_id": number,
-  "precio": number,
-  "stock_minimo": number,
-  "stock_actual": number
+  nombre: string;
+  descripcion?: string;
+  sku: string;
+  categoria_id: number;
+  precio: number;
+  stock_minimo: number;
+  stock_actual: number;
+  activo: boolean;
+  created_at: string;
+  updated_at: string;
 }
 
 export interface ProductoCreate {

@@ -3,17 +3,18 @@ import ConfirmModal from "../../../shared/components/ui/ConfirmModal";
 import Badge from "../../../shared/components/ui/Badge";
 import Button from "../../../shared/components/ui/Button";
 import { useToast } from "../../../shared/hooks/useToast";
-import { Pencil, Trash2, Package, AlertTriangle } from "lucide-react";
+import { Pencil, Trash2, Package } from "lucide-react";
 import EmptyState from "../../../shared/components/ui/EmptyState";
 
 type Producto = {
   id: number;
   nombre: string;
-  descripcion: string;
+  descripcion?: string;
   sku: string;
   precio: number;
   stock_minimo: number;
   stock_actual: number;
+  categoria_id: number;
 };
 
 type Categoria = {

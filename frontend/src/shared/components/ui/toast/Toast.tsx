@@ -1,5 +1,5 @@
 // shared/components/ui/toast/Toast.tsx
-import { CheckCircle, XCircle, X } from "lucide-react";
+import { CheckCircle, XCircle } from "lucide-react";
 
 type Props = {
   message: string;

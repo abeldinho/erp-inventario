@@ -16,7 +16,6 @@ import {
 
 import type { Producto } from "../types/producto";
 import { useCategorias } from "../../categorias/hooks/useCategorias";
-import { ArrowLeft } from "lucide-react";
 
 type Props = {
   onSubmit: (data: any) => Promise<void>;
@@ -57,7 +56,7 @@ export default function ProductoForm({ onSubmit, initialData }: Props) {
         precio: initialData.precio,
         stock_minimo: initialData.stock_minimo,
         categoria_id: initialData.categoria_id,
-      } as ProductoUpdateFormData);
+      });
     } else {
       reset({
         nombre: "",
@@ -66,12 +65,17 @@ export default function ProductoForm({ onSubmit, initialData }: Props) {
         precio: 0,
         stock_minimo: 0,
         categoria_id: undefined,
-      } as ProductoCreateFormData);
+      });
     }
   }, [initialData, isEdit, reset]);
 
   const handleFormSubmit = async (data: any) => {
     try {
+      if (!data.categoria_id) {
+        showError("Selecciona una categoría");
+        return;
+      }
+
       let payload: any = {
         nombre: data.nombre,
         descripcion: data.descripcion,
@@ -114,7 +118,7 @@ export default function ProductoForm({ onSubmit, initialData }: Props) {
           label="SKU"
           placeholder="Código único del producto"
           {...register("sku")}
-          error={errors.sku?.message}
+          error={(errors as any).sku?.message}
         />
       )}
 

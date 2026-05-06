@@ -5,13 +5,14 @@ import {
 import type { MovimientoCreate } from "../../../types/movimientos";
 
 export function useMovimientos() {
-  const create = async (data: MovimientoCreate) => {
+  const create = async (data: MovimientoCreate): Promise<void> => {
     const { tipo, ...payload } = data;
     if (tipo === "entrada") {
-      return await createMovimientoEntrada(payload);
+      await createMovimientoEntrada(payload);
+      return;
     }
 
-    return await createMovimientoSalida(payload);
+    await createMovimientoSalida(payload);
   };
 
   return { create };

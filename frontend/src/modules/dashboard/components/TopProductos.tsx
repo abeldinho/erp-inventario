@@ -5,7 +5,7 @@ export default function TopProductos({ title, productos, getValue }: any) {
     <div className="bg-white p-6 rounded-2xl shadow">
       <h2 className="font-bold mb-4">{title}</h2>
 
-      {productos.map((p: any, i: number) => {
+      {productos.map((p: any) => {
         const val = getValue(p);
         const percent = (val / max) * 100;
 
