@@ -1,0 +1,9 @@
+backend/
+docs/
+node_modules/
+.git/
+*.md
+docker-compose*
+Dockerfile*
+.env*
+.vercelignore
