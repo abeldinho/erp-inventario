@@ -1,0 +1,53 @@
+services:
+  # Base de datos
+  db:
+    image: postgres:15-alpine
+    container_name: inventory-db
+    restart: always
+    environment:
+      POSTGRES_USER: inventory
+      POSTGRES_PASSWORD: inventory_pass
+      POSTGRES_DB: inventory_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  # Backend - FastAPI
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: inventory-backend
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://inventory:inventory_pass@db:5432/inventory_db
+      ENVIRONMENT: development
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    command: >
+      sh -c "
+      python -m src.utils.init_data &&
+      uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+      "
+
+  # Frontend - React/Vite
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: inventory-frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    command: npm run dev -- --host
+
+volumes:
+  postgres_data:

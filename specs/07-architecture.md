@@ -1,0 +1,3 @@
+# Architecture
+
+Detalles de arquitectura.

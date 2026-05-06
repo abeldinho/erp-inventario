@@ -1,0 +1,3 @@
+# Requirements
+
+Requerimientos del sistema.
