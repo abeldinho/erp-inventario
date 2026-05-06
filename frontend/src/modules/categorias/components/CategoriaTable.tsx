@@ -5,14 +5,7 @@ import Button from "../../../shared/components/ui/Button";
 import { useToast } from "../../../shared/hooks/useToast";
 import { Pencil, Trash2, Tags } from "lucide-react";
 import EmptyState from "../../../shared/components/ui/EmptyState";
-
-type Categoria = {
-  id: number;
-  nombre: string;
-  descripcion: string;
-  activo: boolean;
-  created_at: string;
-};
+import type { Categoria } from "../../../types/categoria";
 
 type Props = {
   categorias: Categoria[];

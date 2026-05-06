@@ -5,7 +5,7 @@ import {
   updateCategoria,
   deleteCategoria,
 } from "../../../api/categorias";
-import type { Categoria } from "../types/categoria";
+import type { Categoria } from "../../../types/categoria";
 
 export function useCategorias() {
   const [categorias, setCategorias] = useState<Categoria[]>([]);
