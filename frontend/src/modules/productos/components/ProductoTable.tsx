@@ -5,6 +5,7 @@ import Button from "../../../shared/components/ui/Button";
 import { useToast } from "../../../shared/hooks/useToast";
 import { Pencil, Trash2, Package } from "lucide-react";
 import EmptyState from "../../../shared/components/ui/EmptyState";
+import type { Categoria } from "../../../types/categoria";
 
 type Producto = {
   id: number;
@@ -15,11 +16,6 @@ type Producto = {
   stock_minimo: number;
   stock_actual: number;
   categoria_id: number;
-};
-
-type Categoria = {
-  id: number;
-  nombre: string;
 };
 
 type Props = {

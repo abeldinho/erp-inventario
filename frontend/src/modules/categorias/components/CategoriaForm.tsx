@@ -10,7 +10,7 @@ import {
   categoriaSchema,
   type CategoriaFormData,
 } from "../schemas/categorias.shcema";
-import type { Categoria } from "../types/categoria";
+import type { Categoria } from "../../../types/categoria";
 
 type Props = {
   onSubmit: (data: CategoriaFormData) => Promise<void>;
